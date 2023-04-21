@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Scanner;
 public class Test32 {
 
 	public static void main(String[] args) throws Exception {
@@ -9,15 +10,27 @@ public class Test32 {
 		Connection connection=
 				DriverManager.getConnection(address,"root","root");
 		//step3 getting the prompt
-		Statement st=connection.createStatement();
-		String insertquery="insert into user values('1001','tiger','pavan','pavan@gmail.com')";
-		//step4 passing the query to prompt
-		int n=st.executeUpdate(insertquery);
+		String insertquery="insert into user values(?,?,?,?)";
+		PreparedStatement st=connection.prepareStatement(insertquery);
+        String id,pwd,un,email;
+        Scanner sc=new Scanner(System.in);
+		for(int i=1;i<=10;i++){
+			System.out.println("Enter user details");
+			id=sc.next();
+			pwd=sc.next();
+			un=sc.next();
+			email=sc.next();
+			st.setString(1,  id);
+			st.setString(2,  pwd);
+			st.setString(3,  un);
+			st.setString(4,  email);
+			
+		int n=st.executeUpdate();
 		//step5
 		System.out.println(n +" inserted");
 	}
+	}}
 
-
-	}
+	
 
 
