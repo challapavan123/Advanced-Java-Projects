@@ -29,7 +29,8 @@ public class Test32 {
 		//step5
 		System.out.println(n +" inserted");
 	}
-	}}
+	}
+	}
 
 	
 
